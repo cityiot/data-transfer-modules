@@ -147,29 +147,29 @@ App factory
 
 def create_app(dev_config=False):
     # create and configure the app
-    flask_app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__, instance_relative_config=True)
 
     if dev_config is True:
-        flask_app.config.from_pyfile('config.py')
-        flask_app.config.from_mapping(
+        app.config.from_pyfile('config.py')
+        app.config.from_mapping(
             SECRET_KEY='dev',
             ENV='development',
             DEBUG=True
         )
     else:
         # load the instance config, if it exists, when not testing
-        flask_app.config.from_pyfile('config.py')
+        app.config.from_pyfile('config.py')
 
     # ensure the instance folder exists
     try:
-        os.makedirs(flask_app.instance_path)
+        os.makedirs(app.instance_path)
     except OSError:
         pass
 
     """
     Routes for Application
     """
-    @flask_app.route('/', methods=['GET'])
+    @app.route('/', methods=['GET'])
     def index():
         app.logger.info("#######################################################################################")
         app.logger.info("Requesting: " + request.base_url)
@@ -184,7 +184,7 @@ def create_app(dev_config=False):
             app.logger.info("Responding to request: " + request.base_url)
         return jsonify(system_status_dict), 200
 
-    @flask_app.route('/ts280/thingsee/', methods=['POST'])
+    @app.route('/ts280/thingsee/', methods=['POST'])
     def deliver_data_ts280_thingsee():
         app.logger.info("#######################################################################################")
         app.logger.info("Requesting: " + request.base_url)
@@ -231,7 +231,7 @@ def create_app(dev_config=False):
     """
     End of route definition
     """
-    return flask_app
+    return app
 
 
 if __name__ == '__main__':
