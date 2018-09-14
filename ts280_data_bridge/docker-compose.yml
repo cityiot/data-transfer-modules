@@ -5,8 +5,8 @@ services:
     build: ./
     hostname: ts280_data_bridge
     container_name: ts280_data_bridge
-    expose:
-      - "8080"
+    ports:
+      - 8080:8080
     networks:
       - cityiot_bridge_network
 
