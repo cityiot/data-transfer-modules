@@ -147,94 +147,94 @@ App factory
 
 def create_app(dev_config=False):
     # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
+    flask_app = Flask(__name__, instance_relative_config=True)
 
     if dev_config is True:
-        app.config.from_pyfile('config.py')
-        app.config.from_mapping(
+        flask_app.config.from_pyfile('config.py')
+        flask_app.config.from_mapping(
             SECRET_KEY='dev',
             ENV='development',
             DEBUG=True
         )
     else:
         # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py')
+        flask_app.config.from_pyfile('config.py')
 
     # ensure the instance folder exists
     try:
-        os.makedirs(app.instance_path)
+        os.makedirs(flask_app.instance_path)
     except OSError:
         pass
 
     """
     Routes for Application
     """
-    @app.route('/', methods=['GET'])
+    @flask_app.route('/', methods=['GET'])
     def index():
-        flask_app.logger.info("#######################################################################################")
-        flask_app.logger.info("Requesting: " + request.base_url)
+        app.logger.info("#######################################################################################")
+        app.logger.info("Requesting: " + request.base_url)
 
         try:
             system_status_dict = check_system_status()
         except Exception as exp:
             error_message = "Something strange just happened - " + exp.message
-            flask_app.logger.error(error_message)
+            app.logger.error(error_message)
             return jsonify(msg=error_message), 500
 
-        flask_app.logger.info("Responding to request: " + request.base_url)
+            app.logger.info("Responding to request: " + request.base_url)
         return jsonify(system_status_dict), 200
 
-    @app.route('/ts280/thingsee/', methods=['POST'])
+    @flask_app.route('/ts280/thingsee/', methods=['POST'])
     def deliver_data_ts280_thingsee():
-        flask_app.logger.info("#######################################################################################")
-        flask_app.logger.info("Requesting: " + request.base_url)
+        app.logger.info("#######################################################################################")
+        app.logger.info("Requesting: " + request.base_url)
 
         try:
             request_headers, request_data = ts280_thingsee_parse_request(method=request.method, headers=request.headers, json_data=request.json)
         except Exception as exp:
             error_message = "Could not parse request - " + exp.message
-            flask_app.logger.error(error_message)
+            app.logger.error(error_message)
             return jsonify(msg=error_message), 400
 
         try:
             ts280_thingsee_validate_request(request_headers=request_headers)
         except RuntimeError as exp:
             error_message = "Access forbidden: " + str(exp.message)
-            flask_app.logger.error(error_message)
+            app.logger.error(error_message)
             return jsonify(msg=error_message), 403
         except Exception as exp:
             error_message = "Something strange just happened - " + exp.message
-            flask_app.logger.error(error_message)
+            app.logger.error(error_message)
             return jsonify(msg=error_message), 500
 
         try:
             air_quality_data = ts280_thingsee_parse_data(request_data=request_data)
         except Exception as exp:
             error_message = "Could not parse data - " + exp.message
-            flask_app.logger.error(error_message)
+            app.logger.error(error_message)
             return jsonify(msg=error_message), 400
 
         try:
             send_data_over_ul20(payload_data=air_quality_data)
         except HTTPError as exp:
             error_message = "Could not deliver data to platform: " + str(exp.message)
-            flask_app.logger.error(error_message)
+            app.logger.error(error_message)
             return jsonify(msg=error_message), 500
         except Exception as exp:
             error_message = "Something strange just happened - " + exp.message
-            flask_app.logger.error(error_message)
+            app.logger.error(error_message)
             return jsonify(msg=error_message), 500
 
-        flask_app.logger.info("Responding to request: " + request.base_url)
+            app.logger.info("Responding to request: " + request.base_url)
         return jsonify(), 200
 
     """
     End of route definition
     """
-    return app
+    return flask_app
 
 
 if __name__ == '__main__':
-    flask_app = create_app(dev_config=True)
-    flask_app.run(host="0.0.0.0", port=5000)
+    app = create_app(dev_config=True)
+    app.run(host="0.0.0.0", port=5000)
 
