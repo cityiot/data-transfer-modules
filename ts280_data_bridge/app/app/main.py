@@ -200,7 +200,7 @@ def create_app(dev_config=False):
         try:
             ts280_thingsee_validate_request(request_headers=request_headers)
         except RuntimeError as exp:
-            error_message = "Access forbidden: " + str(exp.message)
+            error_message = "Access forbidden: " + repr(exp.message)
             app.logger.error(error_message)
             return jsonify(msg=error_message), 403
         except Exception as exp:
@@ -218,11 +218,11 @@ def create_app(dev_config=False):
         try:
             send_data_over_ul20(payload_data=air_quality_data)
         except HTTPError as exp:
-            error_message = "Could not deliver data to platform: " + str(exp.message)
+            error_message = "Could not deliver data to platform: " + repr(exp.message)
             app.logger.error(error_message)
             return jsonify(msg=error_message), 500
         except Exception as exp:
-            error_message = "Something strange just happened - " + exp.message
+            error_message = "Something strange just happened - " + repr(exp.message)
             app.logger.error(error_message)
             return jsonify(msg=error_message), 500
 
