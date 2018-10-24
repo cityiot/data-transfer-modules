@@ -32,6 +32,6 @@ FIWARE_SERVICE_PATH = "/uoo/ts280"
 IOT_AGENT_API_KEY = "thingsee-def8"
 IOT_DEVICE_ID = "c6a6-238a"
 
-IOT_AGENT_HOST = "http://pan0107.panoulu.net:7896"
+IOT_AGENT_HOST = "http://pan0107.panoulu.net:8000/idasmgmt"
 
 
