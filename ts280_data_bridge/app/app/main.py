@@ -122,7 +122,8 @@ def send_data_over_ul20(payload_data={}):
     headers = {
         "Content-Type": "text/plain",
         "Fiware-Service": current_app.config['FIWARE_SERVICE'],
-        "Fiware-ServicePath": current_app.config['FIWARE_SERVICE_PATH']
+        "Fiware-ServicePath": current_app.config['FIWARE_SERVICE_PATH'],
+        "Platform-ApiKey": "Jrt0sktOG1StGH7c7vDOpko2grl83rik"
     }
     current_app.logger.debug(func_name + " - Headers to use: " + json.dumps(headers))
 
