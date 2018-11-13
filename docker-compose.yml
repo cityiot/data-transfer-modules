@@ -1,0 +1,49 @@
+version: '2.1'
+
+services:
+
+  fidelix_data_bridge:
+    build: ./fidelix_data_transfer_module/
+    hostname: fidelix_data_bridge
+    container_name: fidelix_data_bridge
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "10"
+    networks:
+      - cityiot_bridge_network
+
+
+  riots_data_bridge:
+    build: ./riots_data_transfer_module/
+    hostname: riots_data_bridge
+    container_name: riots_data_bridge
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "10"
+    networks:
+      - cityiot_bridge_network
+
+  ts280_data_bridge:
+    build: ./ts280_data_bridge/
+    hostname: ts280_data_bridge
+    container_name: ts280_data_bridge
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "10"
+    ports:
+      - 8080:8080
+    networks:
+      - cityiot_bridge_network
+
+
+networks:
+  cityiot_bridge_network:
