@@ -44,6 +44,19 @@ services:
     networks:
       - cityiot_bridge_network
 
+  indoors_data_bridge:
+    build: ./
+    hostname: indoors_data_bridge
+    container_name: indoors_data_bridge
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "10"
+    networks:
+      - cityiot_bridge_network
+
 
 networks:
   cityiot_bridge_network:
