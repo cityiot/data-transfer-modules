@@ -4,29 +4,29 @@ These modules are providing data transfer capabilities to transfer data from ext
 ## Data transfer modules
 
 ### Fidelix data transfer module
-Contains elements for data transfer from specific building automation system. This module requires some configuration before deployment. For more information [see](./fidelix_data_transfer_module)
+Contains elements for data transfer from specific building automation system. This module requires some configuration before deployment. For more information see module's [documentation](./fidelix_data_transfer_module)
 
 **NOTE THAT THIS MODULE CAN NOT BE RELEASED AS PART OF THE PROJECT RESULTS**
 
 
 ### Indoors data transfer module
-Contains elements for data transfer from specific user feedback gathering system. This module requires some configuration before deployment. For more information [see](./indoors_data_transfer_module)
+Contains elements for data transfer from specific user feedback gathering system. This module requires some configuration before deployment. For more information see module's [documentation](./indoors_data_transfer_module)
 
 **NOTE THAT THIS MODULE CAN NOT BE RELEASED AS PART OF THE PROJECT RESULTS**
 
 
 ### Riots data transfer module
-Contains elements for data transfer from specific IAQ sensor system. This module requires some configuration before deployment. For more information [see](./riots_data_transfer_module)
+Contains elements for data transfer from specific IAQ sensor system. This module requires some configuration before deployment. For more information see module's [documentation](./riots_data_transfer_module)
 
 **NOTE THAT THIS MODULE CAN NOT BE RELEASED AS PART OF THE PROJECT RESULTS**
 
 
 ### TS280 data bridge
-Contains elements for data transfer from [Thingsee One](https://thingsee.com/thingsee-one/). This module requires some configuration before deployment. For more information [see](./ts280_data_bridge)
+Contains elements for data transfer from [Thingsee One](https://thingsee.com/thingsee-one/). This module requires some configuration before deployment. For more information see module's [documentation](./ts280_data_bridge)
 
 
 ### Weather data transfer module
-Contains elements for weather data transfer from [OpenWeatherMap.org](https://openweathermap.org/) via their [API](https://openweathermap.org/current).  This module requires some configuration before deployment. For more information [see](./weather_data_transfer_module)
+Contains elements for weather data transfer from [OpenWeatherMap.org](https://openweathermap.org/) via their [API](https://openweathermap.org/current).  This module requires some configuration before deployment. For more information see module's [documentation](./weather_data_transfer_module)
 
 
 ## Deployment
@@ -75,15 +75,17 @@ These instructions are based on Ubuntu 16.04 LTS but most likely these same prin
 
     cd  cityiot-platform-fiware/data-transfer-modules/<module_name>
 
-#### Start modules  
+### Deploy
+
+#### Start module(s)  
 
     docker-compose up -d
 
-#### Verify that modules are running  
+#### Verify that module(s) is/are running  
 
     docker-compose ps
 
-#### Stop modules  
+#### Stop module(s)
 
     docker-compose down
     
