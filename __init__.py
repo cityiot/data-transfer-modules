@@ -7,7 +7,7 @@ __credits__ = [""]
 __license__ = "MIT"
 __version__ = "0.0.1"
 __maintainer__ = "Jani Yli-Kantola"
-__contact__ = "https://bitbucket.org/jylika/hieronnan-potilastietojarjestelma-2/"
+__contact__ = "https://bitbucket.org/cityiot/cityiot-platform-fiware/src/master/"
 __status__ = "Development"
 """
 
