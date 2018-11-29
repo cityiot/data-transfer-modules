@@ -54,8 +54,6 @@ services:
       options:
         max-size: "5m"
         max-file: "10"
-    ports:
-      - 8080:8080
     networks:
       - cityiot_bridge_network
 
