@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+  riots_data_bridge:
+    build: ./
+    hostname: riots_data_bridge
+    container_name: riots_data_bridge
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "10"
+    networks:
+      - cityiot_bridge_network
+
+
+networks:
+  cityiot_bridge_network:
