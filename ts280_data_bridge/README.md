@@ -1,39 +1,44 @@
-# Weather data transfer module
-Contains elements for weather data transfer from [OpenWeatherMap.org](https://openweathermap.org/) via their [API](https://openweathermap.org/current).  This module requires some configuration before deployment.
+# TS280 data bridge
+Contains elements for data transfer from [Thingsee One](https://thingsee.com/thingsee-one/). This module requires some configuration before deployment.
 
 
 ## Configuration
 
-Configuration is based on in line configuration. Configuration has been divided into multiple sections.
+Configuration is based on configuration file. Configuration has been divided into three sections.
 
-### First section - Weather data source
-Weather data API is introduced as follows
+### First section - Sensor identity
+Sensor identity is verified as follows
 
-    weather_api_url = <<String>>
+    SENSOR_USER_AGENT = <<String>>
+    SENSOR_CONNECTOR_NAME = <<String>>
+    SENSOR_DEVICE_ID = <<String>>
     
-For more information and to make chances see: [main.py](./main.py)
+For more information and to make chances see: [config.py](./instance/config.py)
 
-### Second section - Context
-FIWARE Context is introduced as follows 
+### Second section - Sensor data attribute mapping
+Data attributes are mapped as follows 
 
-    fiware_service = <<String>>
-    fiware_service_path = <<String>>
-    entity_type = <<String>>
-    entity_id = <<String>>
+    SENSOR_ATTRIBUTE_MAPPING = {
+        "temperature": <<String>>,
+        "relativeHumidity": <<String>>,
+        "airPressure": <<String>>,
+        "batteryLevel": <<String>>
+    }
     
-For more information and to make chances see: [main.py](./main.py)
+For more information and to make chances see: [config.py](./instance/config.py)
 
 ### Third section - IoT Agent configuration
 IoT Agent is introduced as follows
 
-    iot_agent_protocol = <<String>>
-    iot_agent_ip = <<String>>
-    iot_agent_port = <<String>>
-    iot_device_api_key = <<String>>
-    device_id = <<String>>
-    payload_template = <<String>>
+    FIWARE_SERVICE = <<String>>
+    FIWARE_SERVICE_PATH = <<String>>
     
-For more information and to make chances see: [main.py](./main.py)
+    IOT_AGENT_API_KEY = <<String>>
+    IOT_DEVICE_ID = <<String>>
+    
+    IOT_AGENT_HOST = <<String>>
+    
+For more information and to make chances see: [config.py](./instance/config.py)
 
 ## Deployment
 
@@ -73,7 +78,7 @@ These instructions are based on Ubuntu 16.04 LTS but most likely these same prin
     
 #### Switch to specific working directory
 
-    cd  cityiot-platform-fiware/data-transfer-modules/weather_data_transfer_module
+    cd  cityiot-platform-fiware/data-transfer-modules/ts280_data_bridge
 
 ### Deploy
 

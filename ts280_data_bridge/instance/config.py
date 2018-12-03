@@ -7,7 +7,7 @@ __credits__ = [""]
 __license__ = "MIT"
 __version__ = "0.0.1"
 __maintainer__ = "Jani Yli-Kantola"
-__contact__ = "s://bitbucket.org/cityiot/cityiot-platform-fiware"
+__contact__ = "https://bitbucket.org/cityiot/cityiot-platform-fiware"
 __status__ = "Development"
 """
 
@@ -16,6 +16,7 @@ SENSOR_USER_AGENT = "tsone/0.3"
 SENSOR_CONNECTOR_NAME = "Thingsee Cloud"
 SENSOR_DEVICE_ID = "24f318a0-b5cb-11e8-8794-75c2cccfc6a6"
 
+# Attribute mapping
 SENSOR_ATTRIBUTE_MAPPING = {
     "temperature": "0x00060100",
     "relativeHumidity": "0x00060200",
@@ -23,9 +24,7 @@ SENSOR_ATTRIBUTE_MAPPING = {
     "batteryLevel": "0x00030200"
 }
 
-
 # Data transfer
-
 FIWARE_SERVICE = "indoor_air"
 FIWARE_SERVICE_PATH = "/uoo/ts280"
 

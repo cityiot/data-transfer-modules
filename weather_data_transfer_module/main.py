@@ -153,14 +153,20 @@ def main():
 
     # Data transfer via IoT Agent
     iot_agent_protocol = "http://"
-    #iot_agent_ip = "127.0.0.1"
     iot_agent_ip = "pan0107.panoulu.net"
     iot_agent_port = "8000/idasdata"
+    iot_device_api_key = "raspberrypi-sensors"
+    device_id = "ae68"
+    payload_template = "temperature|TEMP_TO_REPLACE|humidity|HUMIDITY_TO_REPLACE|pressure|PRESSURE_TO_REPLACE|wind_speed|WIND_SPEED_TO_REPLACE|wind_dir|WIND_DIR_TO_REPLACE|weather_type|WEATHER_TYPE_TO_REPLACE"
 
+    # Context information
     fiware_service = "weather"
     fiware_service_path = "/oulu"
     entity_type = "WeatherObserved"
-    iot_device_api_key = "raspberrypi-sensors"
+    entity_id = "0e72"
+
+    # Weather data API
+    weather_api_url = "http://api.openweathermap.org/data/2.5/weather?id=643493&appid=***REMOVED***&units=metric"  # THIS APPID IS NOT FOR GENERAL USE! GET YOUR OWN!
 
     iot_agent_base_address = iot_agent_protocol + iot_agent_ip + ":" + iot_agent_port
     print("Querying IoT-Agent in: %s" % (iot_agent_base_address))
@@ -170,14 +176,14 @@ def main():
         try:
             send_data_over_ul20(
                 base_url=iot_agent_base_address,
-                entity_id="0e72",
-                device_id="ae68",
+                entity_id=entity_id,
+                device_id=device_id,
                 fiware_service=fiware_service,
                 fiware_service_path=fiware_service_path,
                 iot_device_api_key=iot_device_api_key,
-                payload_template="temperature|TEMP_TO_REPLACE|humidity|HUMIDITY_TO_REPLACE|pressure|PRESSURE_TO_REPLACE|wind_speed|WIND_SPEED_TO_REPLACE|wind_dir|WIND_DIR_TO_REPLACE|weather_type|WEATHER_TYPE_TO_REPLACE",
+                payload_template=payload_template,
                 entity_type=entity_type,
-                weather_api_url="http://api.openweathermap.org/data/2.5/weather?id=643493&appid=***REMOVED***&units=metric"  # THIS APPID IS NOT FOR GENERAL USE! GET YOUR OWN!
+                weather_api_url=weather_api_url
             )
         except Exception as exp:
             print(" --> " + repr(exp))
