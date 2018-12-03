@@ -90,3 +90,12 @@ These instructions are based on Ubuntu 16.04 LTS but most likely these same prin
     docker-compose down
     
     
+### Cleaning the environment
+
+#### Docker-Compose
+
+    docker-compose down --remove-orphans --volumes --rmi all
+    
+#### Docker
+
+    docker system prune --all
