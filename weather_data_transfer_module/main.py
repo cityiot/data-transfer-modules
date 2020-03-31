@@ -166,7 +166,7 @@ def main():
     entity_id = "0e72"
 
     # Weather data API
-    weather_api_url = "http://api.openweathermap.org/data/2.5/weather?id=643493&appid=***REMOVED***&units=metric"  # THIS APPID IS NOT FOR GENERAL USE! GET YOUR OWN!
+    weather_api_url = "http://api.openweathermap.org/data/2.5/weather?id=643493&appid=appid&units=metric" #USE YOUR APPID!
 
     iot_agent_base_address = iot_agent_protocol + iot_agent_ip + ":" + iot_agent_port
     print("Querying IoT-Agent in: %s" % (iot_agent_base_address))

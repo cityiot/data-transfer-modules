@@ -776,7 +776,7 @@ def main():
         iot_device_api_key=iot_device_api_key,
         payload_template=payload_for_data_transfer_simulation,
         entity_type=entity_type,
-        weather_api_url="http://api.openweathermap.org/data/2.5/weather?id=643493&appid=***REMOVED***&units=metric"  # THIS APPID IS NOT FOR GENERAL USE! GET YOUR OWN!
+        weather_api_url="http://api.openweathermap.org/data/2.5/weather?id=643493&appid=cda839f7ee3f428b7a337cb2a094bd43&units=metric"  # THIS APPID IS NOT FOR GENERAL USE! GET YOUR OWN!
     )
 
 
