@@ -3,24 +3,6 @@ These modules are providing data transfer capabilities to transfer data from ext
 
 ## Data transfer modules
 
-### Fidelix data transfer module
-Contains elements for data transfer from specific building automation system. This module requires some configuration before deployment. For more information see module's [documentation](./fidelix_data_transfer_module).
-
-_NOTE THAT THIS MODULE CAN NOT BE RELEASED AS PART OF THE PROJECT RESULTS_
-
-
-### Indoors data transfer module
-Contains elements for data transfer from specific user feedback gathering system. This module requires some configuration before deployment. For more information see module's [documentation](./indoors_data_transfer_module).
-
-_NOTE THAT THIS MODULE CAN NOT BE RELEASED AS PART OF THE PROJECT RESULTS_
-
-
-### Riots data transfer module
-Contains elements for data transfer from specific IAQ user feedback system. This module requires some configuration before deployment. For more information see module's [documentation](./riots_data_transfer_module).
-
-_NOTE THAT THIS MODULE CAN NOT BE RELEASED AS PART OF THE PROJECT RESULTS_
-
-
 ### TS280 data bridge
 Contains elements for data transfer from [Thingsee One](https://thingsee.com/thingsee-one/). This module requires some configuration before deployment. For more information see module's [documentation](./ts280_data_bridge).
 
